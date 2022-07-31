@@ -1,6 +1,7 @@
 const wrapLog = function(callback, name) {
   return function() {
-    console.log(`${name}(${arguments[0]}, ${arguments[1]}) => ${callback(arguments[0], [arguments[1]], arguments[2])}`);
+    let args = Object.values(arguments);
+    console.log(`${name}(${args.join(', ')}) => ${callback.apply(null, arguments)}`);
   };
 };
 
